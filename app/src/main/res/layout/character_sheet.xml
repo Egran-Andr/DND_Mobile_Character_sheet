@@ -1,0 +1,3014 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Лист персонажа со всеми характеристиками-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainscroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:flow_wrapMode="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/pgportrait"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/charpageholder"/>
+
+            <TextView
+                android:id="@+id/pgnametxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="serif"
+                android:text="@android:string/unknownName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toStartOf="@+id/pgportrait"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Character name" />
+
+            <TextView
+                android:id="@+id/pgclasstxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@android:string/unknownName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pgnametxt" />
+
+            <TextView
+                android:id="@+id/pgxptxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/addxpbtn"
+                app:layout_constraintStart_toStartOf="@+id/pglvtxt2"
+                app:layout_constraintTop_toTopOf="@+id/addxpbtn"
+                tools:text="xxxx xp"
+                />
+
+            <Button
+                android:id="@+id/addxpbtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="+"
+                app:layout_constraintStart_toEndOf="@+id/pgxptxtv"
+                app:layout_constraintTop_toBottomOf="@+id/pglvtxt" />
+
+            <TextView
+                android:id="@+id/pglvtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="monospace"
+                android:text="1"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/pglvtxt2"
+                app:layout_constraintTop_toBottomOf="@+id/pgclasstxt" />
+
+            <TextView
+                android:id="@+id/pglvtxt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/lv"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pglvtxt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/pglvtxt" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/bonus_comp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pglvtxt"
+                app:layout_constraintEnd_toStartOf="@+id/proftxt"
+                app:layout_constraintTop_toTopOf="@+id/pglvtxt" />
+
+            <TextView
+                android:id="@+id/proftxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+0"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView18"
+                app:layout_constraintStart_toStartOf="@+id/inspirationbtn"
+                app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+            <CheckBox
+                android:id="@+id/inspirationbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center_vertical"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/addxpbtn"
+                app:layout_constraintEnd_toStartOf="@+id/pgportrait" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/inspiration"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/inspirationbtn"
+                app:layout_constraintEnd_toStartOf="@+id/inspirationbtn"
+                app:layout_constraintTop_toTopOf="@+id/inspirationbtn" />
+
+            <ProgressBar
+                android:id="@+id/xpbar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/addxpbtn"
+                app:layout_constraintStart_toStartOf="@+id/pgxptxtv"
+                app:layout_constraintTop_toBottomOf="@+id/addxpbtn" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/header">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/STR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/STRmod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="+0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/STRtag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/str"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/DEX"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/DEXmod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="+0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/DEXtag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/dex"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/CON"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/CONmod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="+0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/CONtag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/constitution"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/INT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/INTmod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="+0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/INTtag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/inte"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/WIS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/WISmod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="+0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/WIStag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/wisdom"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/CHA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/CHAmod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitrasp"
+                    android:text="+0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/CHAtag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/charisma"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/capf"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stats">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/CA"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitraspblu"
+                    android:gravity="center_horizontal"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/CAtag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/armorclass"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/semitraspred"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/pfminus"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:foregroundGravity="right"
+                        android:src="@drawable/remove"
+                        android:textAlignment="textEnd" />
+
+                    <TextView
+                        android:id="@+id/PF"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_weight="2"
+                        android:gravity="center_horizontal"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/pfplus"
+                        style="@style/Widget.AppCompat.ImageButton"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:foregroundGravity="left"
+                        android:src="@drawable/add"
+                        android:textAlignment="textStart" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/PFtag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/hitpoints"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/PFmax"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/semitraspred"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/PFMAXtag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/maxhp"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/skillstitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/abilitieslist"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/capf" />
+
+        <ImageView
+            android:id="@+id/dwnaab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/skillstitle"
+            app:layout_constraintStart_toEndOf="@+id/skillstitle"
+            app:layout_constraintTop_toTopOf="@+id/skillstitle"
+            app:srcCompat="@drawable/uparrow" />
+
+        <LinearLayout
+            android:id="@+id/skills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/skillstitle">
+
+            <LinearLayout
+                android:id="@+id/ts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingTop="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="@string/language"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/linguetxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textMultiLine"
+                    android:textSize="12sp"
+                    tools:text="Draconic\nCommon" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="@string/profs"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/armitxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textMultiLine"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="@string/classfeat"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/talentitxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textMultiLine"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="@string/rasefeat"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/abilitatxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="textMultiLine"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tstitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/savethrowtitle"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/comptsfor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:button="@drawable/checkmark"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/TSFOR"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        tools:text="+100" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dex"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/comptsdex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:button="@drawable/checkmark"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/TSDEX"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        tools:text="+100" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/constitution"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/comptscos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:button="@drawable/checkmark"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/TSCOS"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        tools:text="+100" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inte"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/comptsint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:button="@drawable/checkmark"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/TSINT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        tools:text="+100" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/wisdom"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/comptswis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:button="@drawable/checkmark"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/TSSAG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        tools:text="+100" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/charisma"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/comptscha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:button="@drawable/checkmark"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/TSCAR"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        tools:text="+100" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/abilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:id="@+id/abilitatitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/skilltitle"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/str"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/abilitatitle" />
+
+
+                <TextView
+                    android:id="@+id/atletica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/atleticatxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/STRskillathletics"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/atletica"
+                    app:layout_constraintStart_toEndOf="@+id/atletica" />
+
+                <CheckBox
+                    android:id="@+id/expatletics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/atleticatxt"
+                    app:layout_constraintEnd_toStartOf="@+id/compathletics" />
+
+                <CheckBox
+                    android:id="@+id/compathletics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/atleticatxt"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/dex"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/atletica" />
+
+
+                <TextView
+                    android:id="@+id/acrobatics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView9"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/acrobaticstxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/DEXskillacrobatics"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/acrobatics"
+                    app:layout_constraintStart_toEndOf="@+id/acrobatics" />
+
+                <CheckBox
+                    android:id="@+id/expacrobatics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/acrobaticstxt"
+                    app:layout_constraintEnd_toStartOf="@id/compacrobatics" />
+
+                <CheckBox
+                    android:id="@+id/compacrobatics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expacrobatics"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/stealth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/acrobatics"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/stealthtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/DEXskillstealth"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/stealth"
+                    app:layout_constraintStart_toEndOf="@+id/stealth" />
+
+                <CheckBox
+                    android:id="@+id/expstealth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/stealthtxt"
+                    app:layout_constraintEnd_toStartOf="@id/compstealth" />
+
+                <CheckBox
+                    android:id="@+id/compstealth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@id/expstealth"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/hand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stealth"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/handtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/DEXskillands"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/hand"
+                    app:layout_constraintStart_toEndOf="@+id/hand" />
+
+                <CheckBox
+                    android:id="@+id/exphand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/handtxt"
+                    app:layout_constraintEnd_toStartOf="@id/comphand" />
+
+                <CheckBox
+                    android:id="@+id/comphand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@id/exphand"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/inte"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hand" />
+
+
+                <TextView
+                    android:id="@+id/investigation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView17"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/investigationtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/INTskillinvestigation"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/investigation"
+                    app:layout_constraintStart_toEndOf="@+id/investigation" />
+
+                <CheckBox
+                    android:id="@+id/expinvestigation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/investigationtxt"
+                    app:layout_constraintEnd_toStartOf="@id/compinvestigation" />
+
+                <CheckBox
+                    android:id="@+id/compinvestigation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expinvestigation"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/arcana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/investigation"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/arcanatxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/INTskillarcana"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/arcana"
+                    app:layout_constraintStart_toEndOf="@id/arcana" />
+
+                <CheckBox
+                    android:id="@+id/exparcana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/arcanatxt"
+                    app:layout_constraintEnd_toStartOf="@id/comparcana" />
+
+                <CheckBox
+                    android:id="@+id/comparcana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/exparcana"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/arcana"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/historytxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/INTskillhistory"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/history"
+                    app:layout_constraintStart_toEndOf="@+id/history" />
+
+                <CheckBox
+                    android:id="@+id/exphistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/historytxt"
+                    app:layout_constraintEnd_toStartOf="@id/comphistory" />
+
+                <CheckBox
+                    android:id="@+id/comphistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/exphistory"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/religionfolklore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/history"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/religiontxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/INTskillReligion"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/religionfolklore"
+                    app:layout_constraintStart_toEndOf="@+id/religionfolklore" />
+
+                <CheckBox
+                    android:id="@+id/expreligionfolklore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/religiontxt"
+                    app:layout_constraintEnd_toStartOf="@id/compreligionfolklore" />
+
+                <CheckBox
+                    android:id="@+id/compreligionfolklore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expreligionfolklore"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/nature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/expreligionfolklore"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/naturetxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/INTskillnature"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/nature"
+                    app:layout_constraintStart_toEndOf="@+id/nature" />
+
+                <CheckBox
+                    android:id="@+id/expnature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/naturetxt"
+                    app:layout_constraintEnd_toStartOf="@id/compnature" />
+
+                <CheckBox
+                    android:id="@+id/compnature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expnature"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/wisdom"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nature" />
+
+
+                <TextView
+                    android:id="@+id/survival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView24"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/survivaltxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/WISskillsirvival"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/survival"
+                    app:layout_constraintStart_toEndOf="@+id/survival" />
+
+                <CheckBox
+                    android:id="@+id/expsurvival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/survivaltxt"
+                    app:layout_constraintEnd_toStartOf="@id/compsurvival" />
+
+                <CheckBox
+                    android:id="@+id/compsurvival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expsurvival"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/medicine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/survival"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/medicinetxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/WISskillmedicine"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/medicine"
+                    app:layout_constraintStart_toEndOf="@+id/medicine" />
+
+                <CheckBox
+                    android:id="@+id/expmedicine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/medicinetxt"
+                    app:layout_constraintEnd_toStartOf="@id/compmedicine" />
+
+                <CheckBox
+                    android:id="@+id/compmedicine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expmedicine"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/perception"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicine"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/perceptiontxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/WISskillperception"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/perception"
+                    app:layout_constraintStart_toEndOf="@+id/perception" />
+
+                <CheckBox
+                    android:id="@+id/expperception"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/perceptiontxt"
+                    app:layout_constraintEnd_toStartOf="@id/compperception" />
+
+                <CheckBox
+                    android:id="@+id/compperception"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expperception"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/insight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/perception"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/insighttxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/WISskillInsight"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/insight"
+                    app:layout_constraintStart_toEndOf="@+id/insight" />
+
+                <CheckBox
+                    android:id="@+id/expinsight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/insighttxt"
+                    app:layout_constraintEnd_toStartOf="@id/compinsight" />
+
+                <CheckBox
+                    android:id="@+id/compinsight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expinsight"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <CheckBox
+                    android:id="@+id/expanimal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/animaltxt"
+                    app:layout_constraintEnd_toStartOf="@id/companimal" />
+
+                <CheckBox
+                    android:id="@+id/companimal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expanimal"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/animaltxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/WISskillanimalhandling"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/animal"
+                    app:layout_constraintStart_toEndOf="@+id/animal" />
+
+                <TextView
+                    android:id="@+id/animal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/insight"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/textView29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/charisma"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/animal" />
+
+
+                <TextView
+                    android:id="@+id/intimidation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView29"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/intimidationtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/CHAskillintimidation"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/intimidation"
+                    app:layout_constraintStart_toEndOf="@+id/intimidation" />
+
+                <CheckBox
+                    android:id="@+id/expintimidation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/intimidationtxt"
+                    app:layout_constraintEnd_toStartOf="@id/compintimidation" />
+
+                <CheckBox
+                    android:id="@+id/compintimidation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expintimidation"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/deception"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/intimidation"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/deceptiontxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/CHAskillDeception"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/deception"
+                    app:layout_constraintStart_toEndOf="@+id/deception" />
+
+                <CheckBox
+                    android:id="@+id/expdeception"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/deceptiontxt"
+                    app:layout_constraintEnd_toStartOf="@id/compdeception" />
+
+                <CheckBox
+                    android:id="@+id/compdeception"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expdeception"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/perfomance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/deception"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/perfomancetxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/CHAskillPerfomance"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/perfomance"
+                    app:layout_constraintStart_toEndOf="@+id/perfomance" />
+
+                <CheckBox
+                    android:id="@+id/expperfomance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/perfomancetxt"
+                    app:layout_constraintEnd_toStartOf="@id/compperfomance" />
+
+                <CheckBox
+                    android:id="@+id/compperfomance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/expperfomance"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/persuation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:paddingStart="5dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/perfomance"
+                    tools:text="+100" />
+
+                <TextView
+                    android:id="@+id/persuationtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/CHAskillPersuasion"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/persuation"
+                    app:layout_constraintStart_toEndOf="@+id/persuation" />
+
+                <CheckBox
+                    android:id="@+id/exppersuation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    android:visibility="invisible"
+                    app:layout_constraintBaseline_toBaselineOf="@id/persuationtxt"
+                    app:layout_constraintEnd_toStartOf="@id/compppersuation" />
+
+                <CheckBox
+                    android:id="@+id/compppersuation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:button="@drawable/checkmark"
+                    android:checked="false"
+                    android:duplicateParentState="false"
+                    app:layout_constraintBaseline_toBaselineOf="@id/exppersuation"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/atktitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/attacksandspellstitle"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/skills" />
+
+        <ImageView
+            android:id="@+id/dwnaat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/atktitle"
+            app:layout_constraintStart_toEndOf="@+id/atktitle"
+            app:layout_constraintTop_toTopOf="@+id/atktitle"
+            app:srcCompat="@drawable/uparrow" />
+
+        <LinearLayout
+            android:id="@+id/atk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/atktitle">
+
+            <LinearLayout
+                android:id="@+id/atks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="@color/colorPrimaryDark"
+                    app:cardElevation="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/meleeattack"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/cardview_light_background"
+                            android:textStyle="bold" />
+
+                        <TableLayout
+                            android:id="@+id/meleeatks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        </TableLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/atkmelee"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/attackaction" />
+
+                            <Button
+                                android:id="@+id/addmeleeatk"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/addattack" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="@color/colorPrimaryDark"
+                    app:cardElevation="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rangedattack"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/cardview_light_background"
+                            android:textStyle="bold" />
+
+                        <TableLayout
+                            android:id="@+id/rangedatks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        </TableLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/atkranged"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/attackaction" />
+
+                            <Button
+                                android:id="@+id/addrangedatk"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/addattack" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/spells"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/spellslabel"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/spellcastingability"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/cardview_light_background"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:id="@+id/spelstatselection"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="STAT"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/cardview_light_background"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_weight="1"
+                                    android:foregroundGravity="center_horizontal"
+                                    android:text="@string/spellbonus"
+                                    android:textAlignment="center"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/cardview_light_background"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:id="@+id/spellatktxt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="+0"
+                                    android:textColor="@color/cardview_light_background" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:foregroundGravity="center_vertical"
+                                    android:gravity="center_horizontal"
+                                    android:text="@string/cd"
+                                    android:textAlignment="center"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/cardview_light_background"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:id="@+id/spellcdtxt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:paddingLeft="5dp"
+                                    android:text="+0"
+                                    android:textColor="@color/cardview_light_background" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/mana_points"
+                                    android:textAlignment="center"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/cardview_light_background"
+                                    android:textSize="12sp" />
+
+                                <Button
+                                    android:id="@+id/removemana"
+                                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0"
+                                    android:textAlignment="center"
+                                    android:text="-"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/manatxt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="0/nn"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/cardview_light_background" />
+
+                                <Button
+                                    android:id="@+id/addmana"
+                                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0"
+                                    android:textAlignment="center"
+                                    android:text="+"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/scrollformore"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/white"
+                                android:textSize="12sp" />
+
+                            <Button
+                                android:id="@+id/spellappbtn"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/app_spell"
+                                android:textSize="12sp"
+                                android:visibility="gone" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cantrips"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/cantriplist"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/addcantrip"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/addattack"
+                                android:visibility="gone" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/level_1"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/slotfirsttxtv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Slot nn/nn"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/firstlist"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/castfirstlv"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/cast"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/level_2"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/slotsecondtxtv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Slot nn/nn"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/secondlist"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/castsecondlv"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/cast"
+                                android:visibility="visible" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/level_3"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/slotthirdtxtv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Slot nn/nn"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/thirdlist"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/castthirdlv"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/cast"
+                                android:visibility="visible" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/level_4"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/slotfourthtxtv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Slot nn/nn"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/fourthlsit"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/castfourthlv"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/cast"
+                                android:visibility="visible" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/level_5"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/slotfifthtxtv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Slot nn/nn"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/fifthlist"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/castfifthlv"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/cast"
+                                android:visibility="visible" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/level_6"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/slotsixthtxtv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Slot nn/nn"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/sixthlist"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/castsixthlv"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/cast"
+                                android:visibility="visible" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/level_7"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/slotseventhtxtv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Slot nn/nn"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/seventhlist"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/castseventhlv"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/cast"
+                                android:visibility="visible" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/level_8"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/sloteigthtxtv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Slot nn/nn"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/eigththlist"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/casteightlv"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/cast"
+                                android:visibility="visible" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/level_9"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/slotninthtxtv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Slot nn/nn"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/ninthlist"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/castninthlv"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/cast"
+                                android:visibility="visible" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardElevation="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/level"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/slotplustxtv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Slot nn/nn"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/pluslist"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/cardview_light_background"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/castpluslv"
+                                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:text="@string/cast"
+                                android:visibility="visible" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/dwnainvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/inventorylabel"
+            app:layout_constraintStart_toEndOf="@+id/inventorylabel"
+            app:layout_constraintTop_toBottomOf="@+id/atk"
+            app:srcCompat="@drawable/uparrow" />
+
+        <TextView
+            android:id="@+id/inventorylabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inventory"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/atk" />
+
+        <LinearLayout
+            android:id="@+id/inventory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inventorylabel">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/platcount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        tools:text="+100" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="@string/platinum"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/platinum"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/goldcount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        tools:text="+100" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="@string/gold"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/gold"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/silvercount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        tools:text="+100" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="@string/silver"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/silver"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/coppercount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        tools:text="+100" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="@string/copper"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/copper"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/totalpgmoneytxtv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                tools:text="+100" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_weight="0"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addobjbtn"
+                    android:layout_width="35dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="25dp"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:text="+"
+                    app:iconTint="@color/colorAccent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/inventoryRecV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="true" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/invtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bgtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/backgroundandnodes"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inventory" />
+
+        <ImageView
+            android:id="@+id/dwnabg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/bgtitle"
+            app:layout_constraintStart_toEndOf="@+id/bgtitle"
+            app:layout_constraintTop_toTopOf="@+id/bgtitle"
+            app:srcCompat="@drawable/uparrow" />
+
+        <LinearLayout
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bgtitle">
+
+            <EditText
+                android:id="@+id/backgroundtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

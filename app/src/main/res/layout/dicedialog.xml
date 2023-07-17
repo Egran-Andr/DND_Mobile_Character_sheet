@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Диалоговое окно броска кубиков-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp">
+
+    <ImageView
+        android:id="@+id/diceIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/d20_icon" />
+
+    <TextView
+        android:id="@+id/diceRollHistoryTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/dice"
+        app:layout_constraintStart_toStartOf="@+id/dice"
+        app:layout_constraintTop_toBottomOf="@+id/dice"
+        tools:text="1+103=999" />
+
+    <TextView
+        android:id="@+id/nattxtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/dice"
+        app:layout_constraintStart_toStartOf="@+id/dice"
+        app:layout_constraintTop_toBottomOf="@+id/diceRollResutlTxtV"
+        tools:text="naturel 20!" />
+
+    <TextView
+        android:id="@+id/diceRollResutlTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/dicechoise"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/dice"
+        app:layout_constraintStart_toStartOf="@+id/dice"
+        app:layout_constraintTop_toBottomOf="@+id/diceRollHistoryTxtV" />
+
+    <LinearLayout
+        android:id="@+id/dice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diceIcon">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/D20"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".8"
+                android:background="@color/purple_200"
+                android:padding="5dp"
+                android:text="D20"
+                android:textSize="18sp"
+                app:backgroundTint="@color/purple_200"/>
+
+            <Button
+                android:id="@+id/D100"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@color/purple_200"
+                android:padding="5dp"
+                android:text="D100"
+                android:textSize="18sp"
+                app:backgroundTint="@color/purple_200"/>
+
+            <Button
+                android:id="@+id/D10"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0.8"
+                android:background="@color/purple_200"
+                android:padding="5dp"
+                android:text="D10"
+                android:textSize="18sp"
+                app:backgroundTint="@color/purple_200"/>
+
+            <Button
+                android:id="@+id/D12"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight=".8"
+                android:background="@color/purple_200"
+                android:padding="5dp"
+                android:text="D12"
+                android:textSize="18sp"
+                app:backgroundTint="@color/purple_200"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/D8"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@color/purple_200"
+                android:padding="5dp"
+                android:text="D8"
+                android:textSize="18sp"
+                app:backgroundTint="@color/purple_200" />
+
+            <Button
+                android:id="@+id/D6"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@color/purple_200"
+                android:padding="5dp"
+                android:text="D6"
+                android:textSize="18sp"
+                app:backgroundTint="@color/purple_200" />
+
+            <Button
+                android:id="@+id/D4"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@color/purple_200"
+                android:padding="5dp"
+                android:text="D4"
+                android:textSize="18sp"
+                app:backgroundTint="@color/purple_200" />
+
+            <ImageButton
+                android:id="@+id/coin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+
+                android:background="@color/purple_200"
+                android:padding="5dp"
+                android:src="@drawable/coin"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

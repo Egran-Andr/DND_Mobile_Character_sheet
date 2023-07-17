@@ -1,0 +1,290 @@
+package com.example.rpg_character;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.text.InputType;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class DiceDialog extends Dialog implements View.OnClickListener, View.OnLongClickListener {//диалог броска кубиков(различных)
+
+    public Activity c;
+    private TextView outtxt;
+    private TextView histtxt;
+    private TextView nattxt;
+    private Random rnd;
+    private ArrayList<Integer> rolls;
+    private boolean roll = false;
+    private int bonus;
+    private int max;
+    private int dices;
+    private String text = "";
+    private int[] diceThrown = {0, 0, 0, 0, 0, 0, 0};
+
+    public DiceDialog(Activity a) {//dialog without prof bonus
+        super(a);
+        this.c = a;
+        rnd = new Random(System.currentTimeMillis());
+        rolls = new ArrayList<>();
+    }
+
+    public DiceDialog(Activity a, int bonus, String text) {//dialog with prof bonus
+        super(a);
+        this.c = a;
+        rnd = new Random(System.currentTimeMillis());
+        rolls = new ArrayList<>();
+
+        this.roll = true;
+        this.bonus = bonus;
+        this.text = text;
+        this.max = 20;
+        this.dices = 1;
+    }
+
+    public DiceDialog(Activity a, int dices, int max, int bonus, String text) {
+        super(a);
+        this.c = a;
+        rnd = new Random(System.currentTimeMillis());
+        rolls = new ArrayList<>();
+
+        this.roll = true;
+        this.bonus = bonus;
+        this.text = text;
+        this.max = max;
+        this.dices = dices;
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.dicedialog);
+        Button d20btn = findViewById(R.id.D20);
+        d20btn.setOnClickListener(this);
+        d20btn.setOnLongClickListener(this);
+        Button d100btn = findViewById(R.id.D100);
+        d100btn.setOnClickListener(this);
+        d100btn.setOnLongClickListener(this);
+        Button d12btn = findViewById(R.id.D12);
+        d12btn.setOnClickListener(this);
+        d12btn.setOnLongClickListener(this);
+        Button d10btn = findViewById(R.id.D10);
+        d10btn.setOnClickListener(this);
+        d10btn.setOnLongClickListener(this);
+        Button d8btn = findViewById(R.id.D8);
+        d8btn.setOnClickListener(this);
+        d8btn.setOnLongClickListener(this);
+        Button d6btn = findViewById(R.id.D6);
+        d6btn.setOnClickListener(this);
+        d6btn.setOnLongClickListener(this);
+        Button d4btn = findViewById(R.id.D4);
+        d4btn.setOnClickListener(this);
+        d4btn.setOnLongClickListener(this);
+        ImageButton coinbtn = findViewById(R.id.coin);
+        coinbtn.setOnClickListener(this);
+        ImageView dimage = findViewById(R.id.diceIcon);
+        outtxt = findViewById(R.id.diceRollResutlTxtV);
+        histtxt = findViewById(R.id.diceRollHistoryTxtV);
+        nattxt = findViewById(R.id.nattxtv);
+
+        nattxt.setText("");
+
+        dimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rnd = new Random(System.currentTimeMillis());
+                rolls = new ArrayList<>();
+                roll = false;
+                histtxt.setText("");
+                nattxt.setText("");
+                outtxt.setText(c.getString(R.string.dicechoise));
+                diceThrown = new int[]{0, 0, 0, 0, 0, 0, 0};
+            }
+        });
+
+        if (roll) {
+            String suff = dices + "D" + max;
+            suff += (bonus < 0) ? " " + bonus : " + " + bonus;
+            int result = 0, totalResult = 0;
+            for (int j = 0; j < dices; j++) {
+                result = rnd.nextInt(max) + 1;
+                totalResult += result;
+            }
+            if (dices == 1 && max == 20 && (result == 1 || result == 20)) {
+                nattxt.setText(c.getString(R.string.natureldice, result + ""));
+            }
+            totalResult += bonus;
+            String tmp = suff + " = " + totalResult;
+            outtxt.setText(tmp);
+            histtxt.setText(text);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {//chose your dice
+        int max = 1;
+        int id = v.getId();
+        if (id == R.id.D20) {
+            max = 20;
+            diceThrown[0]++;
+        } else if (id == R.id.D100) {
+            max = 100;
+            diceThrown[1]++;
+        } else if (id == R.id.D12) {
+            max = 12;
+            diceThrown[2]++;
+        } else if (id == R.id.D10) {
+            max = 10;
+            diceThrown[3]++;
+        } else if (id == R.id.D8) {
+            max = 8;
+            diceThrown[4]++;
+        } else if (id == R.id.D6) {
+            max = 6;
+            diceThrown[5]++;
+        } else if (id == R.id.D4) {
+            max = 4;
+            diceThrown[6]++;
+        } else if (id == R.id.coin) {
+            max = -1;
+        }
+
+        nattxt.setText("");
+        if (max != -1) {
+            String suff = "1D" + max;
+            int result = rnd.nextInt(max) + 1;
+            rolls.add(result);
+            if (max == 20 && (result == 1 || result == 20)) {
+                nattxt.setText(c.getString(R.string.natureldice, result + ""));
+            }
+            suff += " = " + result;
+            outtxt.setText(suff);
+            StringBuilder str = new StringBuilder();
+            StringBuilder res = new StringBuilder();
+            res.append(rolls.get(0));
+            int total = rolls.get(0);
+            for (int n : rolls.subList(1, rolls.size())) {
+                res.append("+");
+                res.append(n);
+                total += n;
+            }
+            if (diceThrown[0] > 0) {
+                str.append(diceThrown[0] + "D20");
+            }
+            if (diceThrown[1] > 0) {
+                if (str.length() > 0) str.append(" + ");
+                str.append(diceThrown[1] + "D100");
+            }
+            if (diceThrown[2] > 0) {
+                if (str.length() > 0) str.append(" + ");
+                str.append(diceThrown[2] + "D12");
+            }
+            if (diceThrown[3] > 0) {
+                if (str.length() > 0) str.append(" + ");
+                str.append(diceThrown[3] + "D10");
+            }
+            if (diceThrown[4] > 0) {
+                if (str.length() > 0) str.append(" + ");
+                str.append(diceThrown[4] + "D8");
+            }
+            if (diceThrown[5] > 0) {
+                if (str.length() > 0) str.append(" + ");
+                str.append(diceThrown[5] + "D6");
+            }
+            if (diceThrown[6] > 0) {
+                if (str.length() > 0) str.append(" + ");
+                str.append(diceThrown[6] + "D4");
+            }
+            str.append(" = " + total);
+            histtxt.setText(str.toString());
+            histtxt.setOnClickListener(view -> Toast.makeText(c, res.toString(), Toast.LENGTH_LONG).show());
+            outtxt.setOnClickListener(view -> Toast.makeText(c, res.toString(), Toast.LENGTH_LONG).show());
+        } else {
+            if (rnd.nextBoolean()) outtxt.setText(this.getContext().getText(R.string.Head));
+            else outtxt.setText(this.getContext().getText(R.string.Tails));
+        }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {//chose multiple dices
+        int max = 1;
+        int id = v.getId();
+        if (id == R.id.D20) {
+            max = 20;
+        } else if (id == R.id.D100) {
+            max = 100;
+        } else if (id == R.id.D12) {
+            max = 12;
+        } else if (id == R.id.D10) {
+            max = 10;
+        } else if (id == R.id.D8) {
+            max = 8;
+        } else if (id == R.id.D6) {
+            max = 6;
+        } else if (id == R.id.D4) {
+            max = 4;
+        } else if (id == R.id.coin) {
+            max = -1;
+        }
+
+        if (max != -1) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+            builder.setTitle(this.getContext().getString(R.string.howmanydice, max));
+            final EditText input = new EditText(this.c);
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            builder.setView(input);
+
+            final int finalMax = max;
+            builder.setPositiveButton(R.string.roll, new OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    try {
+                        int howMany = Integer.parseInt(input.getText().toString());
+                        String suff = howMany + "D" + finalMax;
+                        int result;
+                        int totalResult = 0;
+                        for (int j = 0; j < howMany; j++) {
+                            result = rnd.nextInt(finalMax) + 1;
+                            rolls.add(result);
+                            totalResult += result;
+                        }
+                        suff += " = " + totalResult;
+                        outtxt.setText(suff);
+                        StringBuilder str = new StringBuilder();
+                        int total = rolls.get(0);
+                        str.append(rolls.get(0));
+                        for (int n : rolls.subList(1, rolls.size())) {
+                            str.append("+");
+                            str.append(n);
+                            total += n;
+                        }
+                        str.append("= ").append(total);
+                        histtxt.setText(str.toString());
+                    } catch (Exception ex) {
+                        input.setError(getContext().getString(R.string.numbererror));
+                        Toast.makeText(c.getApplicationContext(), getContext().getString(R.string.numbererror), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            builder.show();
+        } else {
+            if (rnd.nextBoolean()) outtxt.setText(R.string.Head);
+            else outtxt.setText(R.string.Tails);
+        }
+        return true;
+    }
+}
